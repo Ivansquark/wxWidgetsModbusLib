@@ -7,28 +7,28 @@ mainFrame::mainFrame(const wxString& title):wxFrame(nullptr,wxID_ANY,title,wxPoi
     lab2 = new wxStaticText(pan,wxID_ANY,"2",wxPoint(350,500),wxSize(100,20),5);
     lab3 = new wxStaticText(pan,wxID_ANY,"3",wxPoint(350,700),wxSize(100,20),5);
     wxFont font = wxFont(20, wxFONTFAMILY_ROMAN, wxFONTSTYLE_ITALIC, wxFONTWEIGHT_BOLD, false);
-    wxColour col(000,100,100);
-    //col.InitRGBA(100,100,100,100);
+    wxColour col(000,50,50,200);
     lab1->SetForegroundColour(wxColour(*wxRED));
     lab1->SetBackgroundColour(col);
     lab1->SetFont(font);
     but = new wxButton(pan,wxID_EXIT,"exit",wxPoint(20,20),wxSize(100,100),5);
-    butConnect = new wxButton(pan,-11,"connect",wxPoint(20,250),wxSize(100,100),5);
-    but2 = new wxButton(pan,-12,"read",wxPoint(20,450),wxSize(100,100),5);
-    but3 = new wxButton(pan,-13,"write",wxPoint(20,650),wxSize(100,100),5);
-    Connect(-11,wxEVT_COMMAND_BUTTON_CLICKED,wxCommandEventHandler(mainFrame::onButConnect));
-    Connect(-12,wxEVT_COMMAND_BUTTON_CLICKED,wxCommandEventHandler(mainFrame::onButRead));
-    Connect(-13,wxEVT_COMMAND_BUTTON_CLICKED,wxCommandEventHandler(mainFrame::onButWrite));
+    butConnect = new wxButton(pan,5001,"connect",wxPoint(20,250),wxSize(100,100),5);
+    but2 = new wxButton(pan,5002,"read",wxPoint(20,450),wxSize(100,100),5);
+    but3 = new wxButton(pan,5003,"write",wxPoint(20,650),wxSize(100,100),5);
+    Connect(5001,wxEVT_COMMAND_BUTTON_CLICKED,wxCommandEventHandler(mainFrame::onButConnect));
+    Connect(5002,wxEVT_COMMAND_BUTTON_CLICKED,wxCommandEventHandler(mainFrame::onButRead));
+    Connect(5003,wxEVT_COMMAND_BUTTON_CLICKED,wxCommandEventHandler(mainFrame::onButWrite));
     but->SetLabel("opa");butConnect->SetSize(90,90);but2->SetSize(90,90);but3->SetSize(90,90);
 	Centre();
-
+	/// [Str]
     ctx = modbus_new_rtu("\\\\.\\COM11", 9600, 'N', 8, 1); //none parity 8-bits 1-stop bits
+	/// [Str]
     modbus_init();
 
-    timer1 = new wxTimer(this, -10);
-    Connect(-10,wxEVT_TIMER,wxTimerEventHandler(mainFrame::onTimer1));
-    
+    timer1 = new wxTimer(this, 5000);
+    Connect(5000,wxEVT_TIMER,wxTimerEventHandler(mainFrame::onTimer1));    
 }
+
 void mainFrame::onButExit(wxCommandEvent& event)
 {
     if(d==nullptr)
