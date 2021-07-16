@@ -25,3 +25,27 @@ modbus-rtu.o: $(SRC)/modbus-rtu.c
 	$(CC) $(SRC)/modbus-rtu.c -c -I$(INC) -g -Wall
 clean:
 	rm -rf *.exe *.o *.map *.lst
+	
+	
+
+
+#SRC = src/
+#INC = inc/
+#BLD = build/
+#
+#CPPFLAGS = -g -O0 -Wall 
+#LDFLAGFS = -lstdc++ -Xlinker -Map=$(BLD)main.map
+#
+#all: $(BLD)main.exe
+#
+#$(BLD)main.exe: $(BLD)main.o
+#	$(CP) -o $(BLD)main $(BLD)main.o $(LDFLAGFS)
+#$(BLD)main.o: $(BLD)main.s	
+#	$(CP) -c $(BLD)main.s -o $(BLD)main.o -I$(INC) $(CPPFLAGS)
+#$(BLD)main.s: $(BLD)main.i
+#	$(CP) -S $(BLD)main.i -o $(BLD)main.s -I$(INC)
+#$(BLD)main.i: $(SRC)main.CPP
+#	$(CP) -E $(SRC)main.cpp >> $(BLD)main.i	-I$(INC)	
+#clean:
+#	rm -R build
+#	mkdir build	
