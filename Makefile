@@ -44,7 +44,7 @@ clean:
 #	$(CP) -c $(BLD)main.s -o $(BLD)main.o -I$(INC) $(CPPFLAGS)
 #$(BLD)main.s: $(BLD)main.i
 #	$(CP) -S $(BLD)main.i -o $(BLD)main.s -I$(INC)
-#$(BLD)main.i: $(SRC)main.CPP
+#$(BLD)main.i: $(SRC)main.cpp
 #	$(CP) -E $(SRC)main.cpp >> $(BLD)main.i	-I$(INC)	
 #clean:
 #	rm -R build
